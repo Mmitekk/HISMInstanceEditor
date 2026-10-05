@@ -27,7 +27,7 @@ Editor-плагин для Unreal Engine 5.2: редактирование от�
 2. Убедиться, что в `.uproject` плагин включён (`"Name": "HISMInstanceEditor", "Enabled": true`).
 3. Пересобрать `Development Editor` (Visual Studio или `Build.bat`). Отдельных зависимостей, кроме `EditorScriptingUtilities`, нет.
 
-Требование: **Unreal Engine 5.2**.
+Требование: **Unreal Engine 5.2** (протестировано). На более новых версиях (5.3+) должен собираться — поменяйте `EngineVersion` в `.uplugin`; если Epic поменял API ISM/HISM, возможны мелкие правки.
 
 ### Типовой сценарий
 
@@ -83,7 +83,7 @@ The headline feature is a **Packed Level Actor-like workflow**: unpack a host in
 2. Make sure the plugin is enabled in `.uproject` (`"Name": "HISMInstanceEditor", "Enabled": true`).
 3. Rebuild `Development Editor` (Visual Studio or `Build.bat`). No extra dependencies besides `EditorScriptingUtilities`.
 
-Requirement: **Unreal Engine 5.2**.
+Requirement: **Unreal Engine 5.2** (tested). Should build on newer versions (5.3+) — update `EngineVersion` in `.uplugin`; minor fixes may be needed if Epic changed the ISM/HISM APIs.
 
 ### Typical workflow
 
