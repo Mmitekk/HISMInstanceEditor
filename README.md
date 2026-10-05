@@ -31,6 +31,16 @@ Editor-плагин для Unreal Engine 5.2: редактирование от�
 3. Pack → проверить визуально / PIE → сохранить уровень вручную.
 4. Не держать сугробы через границу WP-ячейки хоста; не двигать сам хост (у него мировой ноль, сдвиг уедет всё сразу).
 
+## Python-скрипты (Scripts/)
+
+Запуск: в Output Log редактора, поле **Cmd**: `py "<путь>\Scripts\<имя>.py"`. Ничего не сохраняют — проверка + ручной сейв.
+
+- `snowdrift_to_hism.py` — конвертер статики в HISM: собирает актёры с физматериалом `Snowdrift`, группирует по (WP-ячейка, меш) и создаёт нативные HISM-хосты. Настройки вверху файла: `PHYS_PATH`, `CELL_SIZE` (должен совпадать с гридом World Partition), `HOST_LABEL_PREFIX`.
+- `hism_hosts_to_bp.py` — переносит нативные хосты на блюпринт `BP_HISMHost` (создаёт его через фабрику плагина, если нет).
+- `hism_unpack_edit.py` / `hism_repack_edit.py` — тот же Unpack/Pack из меню, но без пересборки плагина: по выделенным хостам / `EDIT_` актёрам.
+
+Пути контента (`/Game/WinterHunt/...`) захардкожены под исходный проект — для другого проекта поправить константы вверху файлов.
+
 ## Состав
 
 ```
@@ -40,6 +50,10 @@ Source/HISMInstanceEditor/
   Public/HISMInstanceEditor.h/.cpp            — пункты контекстного меню
   Public/HISMInstanceEditorLibrary.h/.cpp     — вся логика (Unpack/Pack, маркеры, фабрика BP)
   Public/InstanceMarker.h/.cpp                — актёр-маркер
+Scripts/
+  snowdrift_to_hism.py                        — статика -> HISM (по WP-ячейкам)
+  hism_hosts_to_bp.py                         — нативные хосты -> BP_HISMHost
+  hism_unpack_edit.py / hism_repack_edit.py   — Unpack/Pack без пересборки
 ```
 
 Binaries/Intermediate в репозиторий не коммитятся — собираются локально.
